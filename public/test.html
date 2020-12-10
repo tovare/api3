@@ -98,7 +98,7 @@ d3.json("https://tovare.com/dashboard/data/world-110m.json", function(error, wor
     .attr("class", "land")
     .attr("d", path);
 
-  d3.json("https://tovare.com/apiv2/ga/rtgeo", function(error, data) {
+  d3.json("rtgeo", function(error, data) {
     if (error) throw error;
 
     var LONG = 0;

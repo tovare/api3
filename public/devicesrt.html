@@ -93,7 +93,7 @@ function deviceandel(selection,x,y) {
     // [["DESKTOP","715"],["MOBILE","238"],["TABLET","89"]]    
     //
     
-    d3.json("https://tovare.com/apiv2/ga/rtdevices", function(error, data) {
+    d3.json("rtdevices", function(error, data) {
         if(error){ console.log(error); }
         var devices = data;
         console.log(devices[0])
@@ -109,7 +109,7 @@ function deviceandel(selection,x,y) {
     },5000);
 
     function updateDevices() {
-        d3.json("https://tovare.com/apiv2/ga/rtdevices", function(error, data) {
+        d3.json("rtdevices", function(error, data) {
             if(error){ console.log(error); }
             var devices = data;
             var sum = d3.sum(devices,function(d) {return d[1]})

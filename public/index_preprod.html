@@ -100,7 +100,7 @@ d3.json("data/europe50geojson.topojson", function(error, europe) {
       .attr("d", d3.geoPath().projection(projection));
 
   
-  d3.json("https://tovare.com/apiv2/ga/rtgeo", function(error, data) {
+  d3.json("rtgeo", function(error, data) {
     if (error) throw error;
 
     
@@ -140,7 +140,7 @@ d3.json("data/europe50geojson.topojson", function(error, europe) {
 });
 
 function updateData() {
-    d3.json("https://tovare.com/apiv2/ga/rtgeo", function(error, data) {
+    d3.json("rtgeo", function(error, data) {
         console.log("Oppdaterer geo aktivitet");
         if (error) throw error;
         var sirkler =aktivitet.selectAll("circle")
@@ -178,7 +178,7 @@ function updateData() {
 
 
 
-d3.json("https://tovare.com/apiv2/ga/rtusers", function(error, data) {
+d3.json("rtusers", function(error, data) {
     if(error){ console.log(error); }
     var activeUsers = data['rt:activeUsers'];
     rtusers.datum([activeUsers])
@@ -193,7 +193,7 @@ d3.json("https://tovare.com/apiv2/ga/rtusers", function(error, data) {
         
         
     d3.interval(function() {
-        d3.json("https://tovare.com/apiv2/ga/rtusers", function(error, data) {
+        d3.json("rtusers", function(error, data) {
             if(!error){
                 var activeUsers = data['rt:activeUsers'];
                 console.log("Updated brukere-realtime: "+ activeUsers);
@@ -285,7 +285,7 @@ function deviceandel(selection,x,y) {
     // [["DESKTOP","715"],["MOBILE","238"],["TABLET","89"]]    
     //
     
-    d3.json("https://tovare.com/apiv2/ga/rtdevices", function(error, data) {
+    d3.json("rtdevices", function(error, data) {
         if(error){ console.log(error); }
         var devices = data;
         console.log(devices[0])
@@ -301,7 +301,7 @@ function deviceandel(selection,x,y) {
     },5000);
 
     function updateDevices() {
-        d3.json("https://tovare.com/apiv2/ga/rtdevices", function(error, data) {
+        d3.json("rtdevices", function(error, data) {
             if(error){ console.log(error); }
             var devices = data;
             var sum = d3.sum(devices,function(d) {return d[1]})

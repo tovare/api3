@@ -108,7 +108,7 @@
 console.log("v2")
 
 
-d3.json("https://tovare.com/apiv2/ga/rtusers", function(error, data) {
+d3.json("rtusers", function(error, data) {
     if(error){ console.log(error); }
     var activeUsers = data['rt:activeUsers'];
     d3.select("#overskrft")
@@ -118,7 +118,7 @@ d3.json("https://tovare.com/apiv2/ga/rtusers", function(error, data) {
             return d;
         });
     d3.interval(function() {
-        d3.json("https://tovare.com/apiv2/ga/rtusers", function(error, data) {
+        d3.json("rtusers", function(error, data) {
             if(!error){
                 var activeUsers = data['rt:activeUsers'];
                 console.log("Updated brukere-realtime: "+ activeUsers);
@@ -229,7 +229,7 @@ d3.json("https://tovare.com/dashboard/data/world-110m.json", function(error, wor
     .attr("class", "land")
     .attr("d", path);
 
-  d3.json("https://tovare.com/apiv2/ga/rtgeo", function(error, data) {
+  d3.json("rtgeo", function(error, data) {
     if (error) throw error;
 
     var LONG = 0;
@@ -327,7 +327,7 @@ var g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + heigh
 console.log("v2")
 
 
-d3.json("https://tovare.com/apiv2/ga/rtdevices", function(error, data) {
+d3.json("rtdevices", function(error, data) {
     if(error){ console.log(error); }
 
 
