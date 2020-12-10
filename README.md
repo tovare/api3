@@ -1,6 +1,6 @@
 # api3
 
-Rewritten in Go as part of a consolidation effort to scale back infrastrucure.
+Rewritten in Go as part of a consolidation effort to scale back infrastructure.
 
 
 # Deploying the application
@@ -12,6 +12,6 @@ be deployed using.
 
 To see the command later use:
 
-    cloud app browse -s dashboard
+    cloud app browse
 
 A prerequisite for this application is a cloud scheduler.

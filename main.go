@@ -33,8 +33,11 @@ const (
 	RTDevices string = "rtdevices"
 )
 
-// init authentication for easy testing.
-func init() {
+func main() {
+
+	// Initialize random
+	rand.Seed(time.Now().UnixNano())
+
 	// Initialize the database.
 	var err error
 	ga, err = SetupGoogleAnalyticsService(context.Background())
@@ -42,14 +45,8 @@ func init() {
 		fmt.Println(err)
 		return
 	}
-}
 
-func main() {
-
-	// Initialize random
-	rand.Seed(time.Now().UnixNano())
-
-	err := RefreshData()
+	err = RefreshData()
 	if err != nil {
 		log.Println(err)
 	}
@@ -156,7 +153,7 @@ func RefreshData() (err error) {
 
 // SetupGoogleAnalyticsService authenticates with GA and retrieve a reporting object.
 func SetupGoogleAnalyticsService(ctx context.Context) (gaClient *analytics.Service, err error) {
-	secret, err := GetApplicationSecrets(context.Background())
+	secret, err := GetApplicationSecrets(ctx)
 	if err != nil {
 		return
 	}
