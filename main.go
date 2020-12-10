@@ -1,22 +1,50 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"log"
 	"net/http"
 	"os"
+
+	secretmanager "cloud.google.com/go/secretmanager/apiv1"
+	"golang.org/x/oauth2/google"
+	"google.golang.org/api/analytics/v3"
+	secretmanagerpb "google.golang.org/genproto/googleapis/cloud/secretmanager/v1"
 )
 
 const (
 	AppPrefix = "/dashboard/"
 )
 
+var measssurements map[string][][]string = make(map[string][][]string)
+
+var profiles = [...]string{"ga:9572620", "ga:78449289", "ga:95719958"}
+var ga *analytics.Service
+
+const (
+	RTUsers   string = "rtusers"
+	RTGeo     string = "rtgeo"
+	RTDevices string = "rtdevices"
+)
+
 func main() {
 
+	// Initialize the database.
+	var err error
+	ga, err = SetupGoogleAnalyticsService(context.Background())
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	RefreshData()
+
+	// Set up all endpoints.
 	http.HandleFunc(AppPrefix+"rtusers", RtUsersHandler)
 	http.HandleFunc(AppPrefix+"rtgeo", RtGeoHandler)
 	http.HandleFunc(AppPrefix+"rtdevices", RtDeviceHandler)
-	http.HandleFunc(AppPrefix+"refreshdata", RefreshData)
+	http.HandleFunc(AppPrefix+"refreshdata", RefreshDataHandler)
 	http.Handle(AppPrefix, http.StripPrefix(AppPrefix, http.FileServer(http.Dir("public"))))
 
 	port := os.Getenv("PORT")
@@ -48,10 +76,52 @@ func RtDeviceHandler(w http.ResponseWriter, r *http.Request) {
 
 // RefreshData is called every 10 seconds and refreshes
 // the datasource. This method is open, but the harm is limited.
-func RefreshData(w http.ResponseWriter, r *http.Request) {
+func RefreshDataHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
 		fmt.Fprint(w, "OK")
 	} else {
 		fmt.Fprint(w, "Need POST")
 	}
+}
+
+func SetupGoogleAnalyticsService(ctx context.Context) (gaClient *analytics.Service, err error) {
+	secret, err := GetApplicationSecrets(context.Background())
+	if err != nil {
+		return
+	}
+	jwtConf, err := google.JWTConfigFromJSON(
+		secret,
+		analytics.AnalyticsReadonlyScope,
+	)
+	httpClient := jwtConf.Client(ctx)
+	gaClient, err = analytics.New(httpClient)
+	return
+}
+
+func RefreshData() {
+	rtCall, err := ga.Data.Realtime.Get("ga:78449289", "rt:activeUsers").Do()
+	if err != nil {
+		return
+	}
+
+	fmt.Println(rtCall.Rows)
+}
+
+// GetApplicationSecrets retrieves secrets because we don´t want to use the default
+// serviceaccount. The secret contains oath json credentials.
+func GetApplicationSecrets(ctx context.Context) (secrets []byte, err error) {
+	client, err := secretmanager.NewClient(ctx)
+	if err != nil {
+		return
+	}
+	req := &secretmanagerpb.AccessSecretVersionRequest{
+		Name: "projects/908565461144/secrets/ga-dashboard-serviceaccount/versions/1",
+	}
+
+	secretResponse, err := client.AccessSecretVersion(ctx, req)
+	secrets = secretResponse.Payload.Data
+	if err != nil {
+		return
+	}
+	return
 }
