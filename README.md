@@ -4,6 +4,8 @@ Rewritten in Go as part of a consolidation effort to scale back infrastructure.
 
 Retries realtime statistics from Google Analytics and visualize it on a map.
 
+[https://tovare.com/dashboard/](https://tovare.com/dashboard/)
+
 ![](screenshot.png)
 
 
