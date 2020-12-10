@@ -1,5 +1,7 @@
 # api3
 
+Rewritten in Go as part of a consolidation effort to scale back infrastrucure.
+
 
 # Deploying the application
 
