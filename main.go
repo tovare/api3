@@ -110,7 +110,7 @@ func RtDeviceHandler(w http.ResponseWriter, r *http.Request) {
 
 }
 
-// RefreshData is called every 10 seconds and refreshes
+// RefreshData is called every minute and refreshes
 // the datasource. This method is open, but the harm is limited.
 func RefreshDataHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
