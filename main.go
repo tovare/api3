@@ -117,8 +117,14 @@ func RtDeviceHandler(w http.ResponseWriter, r *http.Request) {
 // the datasource. This method is open, but the harm is limited.
 func RefreshDataHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
-		fmt.Fprint(w, "OK")
+		err := RefreshData()
+		if err != nil {
+			w.WriteHeader(http.StatusInternalServerError)
+			fmt.Fprint(w, "Update failed")
+
+		}
 	} else {
+		w.WriteHeader(http.StatusMethodNotAllowed)
 		fmt.Fprint(w, "Need POST")
 	}
 }
