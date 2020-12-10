@@ -55,9 +55,3 @@ func RefreshData(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprint(w, "Need POST")
 	}
 }
-
-// indexHandler responds to top-level requests to tell
-// us that we are using the incorrect URL.
-func indexHandler(w http.ResponseWriter, r *http.Request) {
-
-}
