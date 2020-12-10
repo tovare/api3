@@ -126,6 +126,9 @@ func RefreshDataHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// Called every 1 minute from cloud scheduler.
+//
+// TODO: Update 6 times for every call with a time delay between each.
 func RefreshData() (err error) {
 
 	var profiles = [...]string{"ga:78449289", "ga:95719958"}
