@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Presentasjon</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="refresh" CONTENT="3600">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+        <!-- Compiled and minified JavaScript -->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+<style>
+html,body {
+    height: 600px;
+    background-color: #00000;
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+    
+}
+
+body {
+    height: 600px;
+    min-height: 100%;
+}
+
+.carousel-slider,iframe {
+    height: 1080px !important;
+}
+
+iframe  {
+    height: 600px;
+    width: 100%;
+    display: block;
+    margin:0;
+    padding:0;
+    border:none;
+}
+
+
+</style>
+
+    </head>
+
+    <body class="black darken-4">
+
+
+ <div class="carousel carousel-slider center" data-indicators="true">
+     
+     
+    <div class="carousel-item black white-text" href="#one!">
+         <iframe src=tfu03.html width="100%" scrolling="no">
+             
+         </iframe>
+    </div>
+
+    <div class="carousel-item black white-text" href="#one!">
+         <iframe src=index.html width="100%" scrolling="no">
+             
+         </iframe>
+    </div>
+
+</div>
+
+<script>
+//      $('.carousel.carousel-slider').carousel({fullWidth: true});
+
+    $(document).ready(function(){
+        $('.carousel').carousel({dist:0});
+        window.setInterval(function(){$('.carousel').carousel('next')},40000)
+     });
+     
+     
+</script>          
+  
+    </body>
+</html>
+

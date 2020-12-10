@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Test-side</title>
+    </head>
+    <body>
+        <svg viewBox="0 0 600 300">
+            <text x="10" y="40"  style="font: 24px sans-serif; inline-size: 250px;">
+                Hello this is a wonderfull world, 
+                where wrapping should be possible.
+                But it isn't ... because browsers are cruel.
+            </text>
+        </svg>
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="300" height="100" viewBox="0 0 300 100">
+
+  <path id="MyPath" stroke="lightblue" fill="none"
+	d="M 50,50 C 100,0 200,100 250,50"/>
+
+  <text style="font: 24px sans-serif;">
+    <textPath href="#MyPath">Text on a path.</textPath>
+  </text>
+
+</svg>
+        
+
+    </body>
+</html>

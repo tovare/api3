@@ -1,0 +1,51 @@
+{
+  "kind": "analytics#realtimeData",
+  "id": "https://www.googleapis.com/analytics/v3/data/realtime?ids=ga:78449289&dimensions=rt:deviceCategory&metrics=rt:activeUsers",
+  "query": {
+    "ids": "ga:78449289",
+    "dimensions": "rt:deviceCategory",
+    "metrics": [
+      "rt:activeUsers"
+    ],
+    "max-results": 1000
+  },
+  "totalResults": 3,
+  "selfLink": "https://www.googleapis.com/analytics/v3/data/realtime?ids=ga:78449289&dimensions=rt:deviceCategory&metrics=rt:activeUsers",
+  "profileInfo": {
+    "profileId": "78449289",
+    "accountId": "9127381",
+    "webPropertyId": "UA-9127381-16",
+    "internalWebPropertyId": "75902882",
+    "profileName": "Alle sider nav.no",
+    "tableId": "realtime:78449289"
+  },
+  "columnHeaders": [
+    {
+      "name": "rt:deviceCategory",
+      "columnType": "DIMENSION",
+      "dataType": "STRING"
+    },
+    {
+      "name": "rt:activeUsers",
+      "columnType": "METRIC",
+      "dataType": "INTEGER"
+    }
+  ],
+  "totalsForAllResults": {
+    "rt:activeUsers": "842"
+  },
+  "rows": [
+    [
+      "DESKTOP",
+      "518"
+    ],
+    [
+      "MOBILE",
+      "214"
+    ],
+    [
+      "TABLET",
+      "110"
+    ]
+  ]
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head><title>test svg</title></head>
+    <body>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+
+<h1></h1>
+<div id="chart"></div>
+
+<script>
+
+var antall = 0
+
+
+
+function startevt() {
+    antall++
+}
+
+function endevt() {
+    antall--
+    if(antall <= 0) {
+        start()
+    }
+}
+
+
+function start(){
+    var a = [1,2,3,4,5,6,7,8,9,10,11]
+    
+    d3.select("h1")
+        .text(antall);
+    
+    d3.select("#chart")
+        .selectAll("p")
+        .data(a)
+        .enter()
+        .append("p")
+        .text(function (d){
+            return d
+        })
+        .attr("id", function(d,i){
+            return "i"+i;
+        })
+        .attr("class","line")
+        .style("background-color","#ffaaaa")
+
+    d3.selectAll(".line")
+        .transition()
+        .delay(function(d,i){
+            return i*1000;
+        })
+        .duration(2000)
+        .style("background-color","red")
+        .transition()
+        .delay(2000)
+        .duration(2000)
+        .style("background-color","blue")
+        .transition()
+        .delay(100)
+        .duration(2000)
+        .style("background-color","white")
+        .transition()
+        .delay(100)
+        .on("start", startevt)
+        .on("end", endevt)
+        
+}
+    
+
+start();
+
+</script>
+<p>Test av d3 timing.</p>
+
+
+</body>
+
+
+</html>

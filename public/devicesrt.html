@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Dashboard</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="refresh" CONTENT="3600">
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+        <!-- Compiled and minified JavaScript -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script>jQuery.noConflict();</script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.20/topojson.js"></script>
+        <style>
+        </style>
+
+    </head>
+
+    <body class="grey darken-4">
+
+<script>
+//
+// ------------------------------
+//
+//
+var svg = d3.select("body")
+    .append("svg")
+    .attr("width","800")
+    .attr("height","800");
+
+//
+// Visning av andel mobile enhter.
+// =================================
+// Figurene ble tegnet i Google Drive sin draw applikasjon etter iPhone, iPad og Asus ROG Swift 279Q som er en konge 
+// skjerm med IPS panel. Sistenevnte er på ønskelisten til jul.
+//
+
+deviceandel(svg,10,10);
+
+function deviceandel(selection,x,y) {
+
+    var im = svg.append("svg:image")
+      .attr("xlink:href", "images/phonerightcenter_ta.svg")
+      .attr("width", 64)
+      .attr("height",64)
+      .attr("x", x)
+      .attr("y", y);
+        
+    selection.append("svg:image")
+      .attr("xlink:href", "images/tabletrightcenter_ta.svg")
+      .attr("width", 64)
+      .attr("height",64)
+      .attr("x", x)
+      .attr("y", y+64);
+
+    selection.append("svg:image")
+      .attr("xlink:href", "images/monitorrightcenter_ta.svg")
+      .attr("width", 64)
+      .attr("height",64)
+      .attr("x", x)
+      .attr("y", y+(64*2));
+
+    var mobile = selection.append("text")
+        .attr("id","MOBILE")
+        .attr("font-size","30")
+        .attr("font-weight","100")
+        .attr("fill", "#aaaaaa")
+        .attr("x",x+80)
+        .attr("y",y+40)
+        .text("- %");
+
+    var tablet = selection.append("text")
+        .attr("id","TABLET")
+        .attr("font-size","30")
+        .attr("font-weight","100")
+        .attr("fill", "#aaaaaa")
+        .attr("x",x+80)
+        .attr("y",y+64+40)
+        .text("- %");
+
+    var desktop = selection.append("text")
+        .attr("id","DESKTOP")
+        .attr("font-size","30")
+        .attr("font-weight","100")
+        .attr("fill", "#aaaaaa")
+        .attr("x",x+80)
+        .attr("y",y+64+64+40)
+        .text("- %");
+
+    // Data format
+    // [["DESKTOP","715"],["MOBILE","238"],["TABLET","89"]]    
+    //
+    
+    d3.json("https://tovare.com/apiv2/ga/rtdevices", function(error, data) {
+        if(error){ console.log(error); }
+        var devices = data;
+        console.log(devices[0])
+        var sum = d3.sum(devices,function(d) {return d[1]})
+        mobile.text(Math.round( devices[1][1]/sum * 100)+ " %");
+        tablet.text(Math.round( devices[2][1]/sum * 100)+ " %");
+        desktop.text(Math.round( devices[0][1]/sum * 100)+ " %");
+    });
+
+    
+    d3.interval(function() {
+        updateDevices();
+    },5000);
+
+    function updateDevices() {
+        d3.json("https://tovare.com/apiv2/ga/rtdevices", function(error, data) {
+            if(error){ console.log(error); }
+            var devices = data;
+            var sum = d3.sum(devices,function(d) {return d[1]})
+            mobile.text(Math.round( devices[1][1]/sum * 100)+ " %");
+            tablet.text(Math.round( devices[2][1]/sum * 100)+ " %");
+            desktop.text(Math.round( devices[0][1]/sum * 100)+ " %");
+            console.log("Devices updated")
+        });
+    }
+    
+}
+
+</script>
+    </body>
+</html>

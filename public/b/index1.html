@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Dashboard</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="refresh" CONTENT="3600">
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+        <!-- Compiled and minified JavaScript -->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+    </head>
+    <body class="black darken-4" id="chart">
+<style>
+html {
+  height: 1000;
+  background-color: #3E3832;
+  color: white;
+}
+body {
+  min-height: 100%;
+}
+
+svg {
+  font-family: 'Source Sans Pro', sans-serif;
+  background-color:  #3E3832;
+  position: fixed;
+  /* bring your own prefixes 
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);*/
+  
+}
+</style>
+
+
+<script> 
+/*global d3 */
+var width=1800, height=900;
+
+var svg = d3.select("body").append("svg")
+    .attr("width", "100%")
+    .attr("height", "100%")
+    .attr("viewBox", "0 0 1950 900")
+
+// viewBox="0 0 100 100"
+//Container for the gradients
+var defs = svg.append("defs");
+
+//Filter for the outside glow
+var filter = defs.append("filter")
+	.attr("id","glow");
+filter.append("feGaussianBlur")
+	.attr("stdDeviation","6.5")
+	.attr("result","coloredBlur");
+var feMerge = filter.append("feMerge");
+feMerge.append("feMergeNode")
+	.attr("in","coloredBlur");
+feMerge.append("feMergeNode")
+	.attr("in","SourceGraphic");
+
+
+var begreper = svg.append("g")
+var visning = svg.append("g")
+
+
+function wrap(text, width) {
+    text.each(function () {
+        var text = d3.select(this),
+            words = text.text().split(/\s+/).reverse(),
+            word,
+            line = [],
+            lineNumber = 0,
+            lineHeight = 1.1, // ems
+            x = text.attr("x"),
+            y = text.attr("y"),
+            dy = 0, //parseFloat(text.attr("dy")),
+            tspan = text.text(null)
+                        .append("tspan")
+                        .attr("x", x)
+                        .attr("y", y)
+                        .attr("dy", dy + "em");
+        while (word = words.pop()) {
+            line.push(word);
+            tspan.text(line.join(" "));
+            if (tspan.node().getComputedTextLength() > width) {
+                line.pop();
+                tspan.text(line.join(" "));
+                line = [word];
+                tspan = text.append("tspan")
+                            .attr("x", x)
+                            .attr("y", y)
+                            .attr("dy", ++lineNumber * lineHeight + dy + "em")
+                            .text(word);
+            }
+        }
+    });
+}
+
+
+function fiksDefinisjon(t) {
+    return t.replace(/\[(.*?)\|.*?\]/g, "$1")
+}
+
+// Les alle begrepene og vis antall begreper.
+// Oppdateres foreløpig ikke.
+d3.json("https://data.nav.no/api/3/action/datastore_search?resource_id=de3c48ae-61c3-4edf-927d-10bde2110e5b&limit=1000").then( function(data) {
+    
+    var antallBegreper = data['result']['total']
+    
+    begreper.datum([antallBegreper])
+        .append("text")
+        .text([antallBegreper])
+        .attr("x",150)
+        .attr("y",150)
+        .attr("font-size","150")
+        .attr("fill", "#B7B1A9")
+    begreper.
+        append("text")
+        .text("Publiserte begreper fra begrepskatalogen")
+        .attr("x",400)
+        .attr("y",150)
+        .attr("font-size","30")
+        .attr("fill", "#B7B1A9")
+
+    var begrepsliste = data['result']['records']
+    
+    visning
+        .append("text")
+        .attr("x", 300)
+        .attr("y", 300)
+        .attr("fill", "white")
+        .attr("id","bid")
+        .text("ID")
+    visning
+        .append("text")
+        .attr("x", 300)
+        .attr("y", 350)
+        .attr("fill", "white")
+        .attr("id","term")
+        .text("begrep")
+        .attr("font-size","50")
+        .style("filter", "url(#glow)")
+
+    visning
+        .append("text")
+        .attr("x", 300)
+        .attr("y", 450)
+        .attr("font-size","50")
+        .attr("fill", "white")
+        .attr("id","definisjon")
+        .text("Definisjon")
+
+
+    function oppdater() {
+        var tilfeldigBegrep = begrepsliste[Math.floor(Math.random()*begrepsliste.length)];
+        console.log(tilfeldigBegrep)
+        var v = visning.datum([tilfeldigBegrep])
+        v.select("#bid")
+            .style("font-size","1px")
+            .text(tilfeldigBegrep['ID'])
+            .transition()
+            .duration(500)
+            .style("font-size","16px")
+                    
+        v.select("#term")
+            .style("font-size","1px")
+            .text(tilfeldigBegrep['Term'])
+            .transition()
+            .duration(500)
+            .style("font-size","50px")
+        v.select("#definisjon")
+            .text(fiksDefinisjon(tilfeldigBegrep['Definisjon']))
+            .call(wrap,1200)
+    }
+
+
+    oppdater()
+    d3.interval(function() {
+        oppdater()
+
+    },10000)
+
+    
+})
+
+
+
+
+
+</script>
+
+
+</body>

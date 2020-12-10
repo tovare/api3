@@ -1,0 +1,364 @@
+source,target,xpos,value
+Andre,Annet,0,102
+Andre,Arbeid og helse,0,62
+Andre,Arbeidsgiver 1+4,0,14
+Andre,Arbeidsgiver 2,0,3
+Andre,Arbeidsgiver 3,0,2
+Andre,Familie,0,31
+Andre,Internasjonalt,0,10
+Andre,Klageinstans,0,1
+Andre,Lege og behandler,0,20
+Andre,Pensjon,0,23
+Andre,Pleiepenger,0,1
+Andre,Sosiale tjenester,0,116
+Andre,Teknisk brukerstøtte,0,4
+Andre,Uføretrygd,0,8
+Andre i NAV,Annet,0,6
+Andre i NAV,Arbeid og helse,0,7
+Andre i NAV,Arbeidsgiver 1+4,0,3
+Andre i NAV,Arbeidsgiver 2,0,5
+Andre i NAV,Familie,0,4
+Andre i NAV,Internasjonalt,0,2
+Andre i NAV,Klageinstans,0,3
+Andre i NAV,Lege og behandler,0,1
+Andre i NAV,Pensjon,0,10
+Andre i NAV,Teknisk brukerstøtte,0,1
+Andre i NAV,Uføretrygd,0,3
+Arbeidsgiver,Annet,0,38
+Arbeidsgiver,Arbeid og helse,0,140
+Arbeidsgiver,Arbeidsgiver 1+4,0,2782
+Arbeidsgiver,Arbeidsgiver 2,0,642
+Arbeidsgiver,Arbeidsgiver 3,0,393
+Arbeidsgiver,Beskjed til NAV - Ort. hjelpemidler,0,1
+Arbeidsgiver,Beskjed til NAV - Pensjon,0,1
+Arbeidsgiver,Beskjed til NAV - Uføretrygd,0,1
+Arbeidsgiver,Familie,0,73
+Arbeidsgiver,Internasjonalt,0,66
+Arbeidsgiver,Klageinstans,0,4
+Arbeidsgiver,Lege og behandler,0,4
+Arbeidsgiver,Pensjon,0,22
+Arbeidsgiver,Pleiepenger,0,5
+Arbeidsgiver,Sosiale tjenester,0,2
+Arbeidsgiver,Teknisk brukerstøtte,0,17
+Arbeidsgiver,Uføretrygd,0,10
+Lege eller behandler,Annet,0,9
+Lege eller behandler,Arbeid og helse,0,46
+Lege eller behandler,Arbeidsgiver 1+4,0,5
+Lege eller behandler,Arbeidsgiver 2,0,8
+Lege eller behandler,Arbeidsgiver 3,0,5
+Lege eller behandler,Familie,0,17
+Lege eller behandler,Internasjonalt,0,9
+Lege eller behandler,Klageinstans,0,3
+Lege eller behandler,Lege og behandler,0,1002
+Lege eller behandler,Pensjon,0,2
+Lege eller behandler,Pleiepenger,0,7
+Lege eller behandler,Sosiale tjenester,0,54
+Lege eller behandler,Teknisk brukerstøtte,0,3
+Lege eller behandler,Uføretrygd,0,8
+NAV-kontoret,Annet,0,13
+NAV-kontoret,Arbeid og helse,0,10
+NAV-kontoret,Arbeidsgiver 1+4,0,1
+NAV-kontoret,Arbeidsgiver 3,0,1
+NAV-kontoret,Beskjed til NAV - Pensjon,0,1
+NAV-kontoret,Familie,0,22
+NAV-kontoret,Internasjonalt,0,14
+NAV-kontoret,Klageinstans,0,2
+NAV-kontoret,Lege og behandler,0,3
+NAV-kontoret,Pensjon,0,24
+NAV-kontoret,Sosiale tjenester,0,8
+NAV-kontoret,Teknisk brukerstøtte,0,25
+NAV-kontoret,Uføretrygd,0,11
+Øvrige samhandlere,Annet,0,111
+Øvrige samhandlere,Arbeid og helse,0,166
+Øvrige samhandlere,Arbeidsgiver 1+4,0,42
+Øvrige samhandlere,Arbeidsgiver 2,0,19
+Øvrige samhandlere,Arbeidsgiver 3,0,3
+Øvrige samhandlere,Beskjed til NAV - Arbeid,0,1
+Øvrige samhandlere,Beskjed til NAV - Pensjon,0,1
+Øvrige samhandlere,Familie,0,37
+Øvrige samhandlere,Internasjonalt,0,32
+Øvrige samhandlere,Klageinstans,0,4
+Øvrige samhandlere,Lege og behandler,0,271
+Øvrige samhandlere,Pensjon,0,92
+Øvrige samhandlere,Pleiepenger,0,4
+Øvrige samhandlere,Sosiale tjenester,0,187
+Øvrige samhandlere,Teknisk brukerstøtte,0,2
+Øvrige samhandlere,Uføretrygd,0,39
+"Pårørende, verge, fullmakt",Annet,0,276
+"Pårørende, verge, fullmakt",Arbeid og helse,0,916
+"Pårørende, verge, fullmakt",Arbeidsgiver 1+4,0,4
+"Pårørende, verge, fullmakt",Beskjed til NAV - Arbeid,0,6
+"Pårørende, verge, fullmakt",Beskjed til NAV - Familie,0,6
+"Pårørende, verge, fullmakt",Beskjed til NAV - Ort. hjelpemidler,0,1
+"Pårørende, verge, fullmakt",Beskjed til NAV - Pensjon,0,2
+"Pårørende, verge, fullmakt",Beskjed til NAV - Uføretrygd,0,5
+"Pårørende, verge, fullmakt",Familie,0,345
+"Pårørende, verge, fullmakt",Internasjonalt,0,72
+"Pårørende, verge, fullmakt",Klageinstans,0,37
+"Pårørende, verge, fullmakt",Lege og behandler,0,9
+"Pårørende, verge, fullmakt",Pensjon,0,316
+"Pårørende, verge, fullmakt",Pleiepenger,0,11
+"Pårørende, verge, fullmakt",Sosiale tjenester,0,312
+"Pårørende, verge, fullmakt",Teknisk brukerstøtte,0,2
+"Pårørende, verge, fullmakt",Uføretrygd,0,125
+Personbruker,Annet,0,2403
+Personbruker,Arbeid og helse,0,18034
+Personbruker,Arbeidsgiver 1+4,0,68
+Personbruker,Arbeidsgiver 2,0,12
+Personbruker,Arbeidsgiver 3,0,8
+Personbruker,Beskjed til NAV - Arbeid,0,2713
+Personbruker,Beskjed til NAV - Familie,0,812
+Personbruker,Beskjed til NAV - Internasjonalt,0,59
+Personbruker,Beskjed til NAV - Ort. hjelpemidler,0,7
+Personbruker,Beskjed til NAV - Pensjon,0,509
+Personbruker,Beskjed til NAV - Uføretrygd,0,452
+Personbruker,Familie,0,6591
+Personbruker,Internasjonalt,0,763
+Personbruker,Klageinstans,0,193
+Personbruker,Lege og behandler,0,44
+Personbruker,Pensjon,0,3027
+Personbruker,Pleiepenger,0,119
+Personbruker,Sosiale tjenester,0,5201
+Personbruker,Teknisk brukerstøtte,0,225
+Personbruker,Uføretrygd,0,2042
+Sperret person,Annet,0,5
+Sperret person,Arbeid og helse,0,10
+Sperret person,Beskjed til NAV - Arbeid,0,1
+Sperret person,Beskjed til NAV - Pensjon,0,2
+Sperret person,Familie,0,5
+Sperret person,Pensjon,0,1
+Sperret person,Pleiepenger,0,1
+Tiltaksarrangør,Annet,0,6
+Tiltaksarrangør,Arbeid og helse,0,9
+Tiltaksarrangør,Arbeidsgiver 1+4,0,113
+Tiltaksarrangør,Arbeidsgiver 2,0,97
+Tiltaksarrangør,Arbeidsgiver 3,0,533
+Tiltaksarrangør,Lege og behandler,0,9
+Tiltaksarrangør,Pensjon,0,2
+Tiltaksarrangør,Sosiale tjenester,0,4
+Tiltaksarrangør,Teknisk brukerstøtte,0,2
+Vet ikke,Annet,0,76
+Vet ikke,Arbeid og helse,0,47
+Vet ikke,Arbeidsgiver 1+4,0,4
+Vet ikke,Arbeidsgiver 2,0,1
+Vet ikke,Arbeidsgiver 3,0,2
+Vet ikke,Familie,0,10
+Vet ikke,Klageinstans,0,3
+Vet ikke,Lege og behandler,0,6
+Vet ikke,Pensjon,0,11
+Vet ikke,Pleiepenger,0,1
+Vet ikke,Sosiale tjenester,0,27
+Vet ikke,Teknisk brukerstøtte,0,2
+Vet ikke,Uføretrygd,0,7
+Annet,Brutt samtale / teknisk feil,1,117
+Annet,Delvis løst/videreformidlet NAV Familie og pensjon,1,21
+Annet,Delvis løst/videreformidlet NKS/NSS,1,835
+Annet,Delvis løst/videreformidlet NØP/NØS,1,8
+Annet,Delvis løst/videreformidlet til annen enhet i NAV,1,56
+Annet,Delvis løst/videreformidlet til Arbeid og ytelser,1,70
+Annet,Delvis løst/videreformidlet til NAV Fylkesledd,1,1
+Annet,Delvis løst/videreformidlet til NAV-kontor,1,477
+Annet,"Ferdig besvart, avsluttet og henvist nav.no",1,949
+Annet,Innringer ringer selv tilbake senere,1,57
+Annet,Ringt feil,1,453
+Annet,Skrevet feil,1,1
+Arbeid og helse,Brutt samtale / teknisk feil,1,151
+Arbeid og helse,Delvis løst/videreformidlet NAV Familie og pensjon,1,45
+Arbeid og helse,Delvis løst/videreformidlet NKS/NSS,1,782
+Arbeid og helse,Delvis løst/videreformidlet NØP/NØS,1,32
+Arbeid og helse,Delvis løst/videreformidlet til annen enhet i NAV,1,114
+Arbeid og helse,Delvis løst/videreformidlet til Arbeid og ytelser,1,1320
+Arbeid og helse,Delvis løst/videreformidlet til NAV Fylkesledd,1,12
+Arbeid og helse,Delvis løst/videreformidlet til NAV-kontor,1,4262
+Arbeid og helse,"Ferdig besvart, avsluttet og henvist nav.no",1,12110
+Arbeid og helse,Innringer ringer selv tilbake senere,1,232
+Arbeid og helse,Ringt feil,1,381
+Arbeid og helse,Skrevet feil,1,6
+Arbeidsgiver 1+4,Brutt samtale / teknisk feil,1,11
+Arbeidsgiver 1+4,Delvis løst/videreformidlet NAV Familie og pensjon,1,35
+Arbeidsgiver 1+4,Delvis løst/videreformidlet NKS/NSS,1,208
+Arbeidsgiver 1+4,Delvis løst/videreformidlet NØP/NØS,1,9
+Arbeidsgiver 1+4,Delvis løst/videreformidlet til annen enhet i NAV,1,23
+Arbeidsgiver 1+4,Delvis løst/videreformidlet til Arbeid og ytelser,1,320
+Arbeidsgiver 1+4,Delvis løst/videreformidlet til NAV Fylkesledd,1,7
+Arbeidsgiver 1+4,Delvis løst/videreformidlet til NAV-kontor,1,105
+Arbeidsgiver 1+4,"Ferdig besvart, avsluttet og henvist nav.no",1,2203
+Arbeidsgiver 1+4,Innringer ringer selv tilbake senere,1,38
+Arbeidsgiver 1+4,Ringt feil,1,77
+Arbeidsgiver 2,Brutt samtale / teknisk feil,1,4
+Arbeidsgiver 2,Delvis løst/videreformidlet NAV Familie og pensjon,1,1
+Arbeidsgiver 2,Delvis løst/videreformidlet NKS/NSS,1,88
+Arbeidsgiver 2,Delvis løst/videreformidlet til annen enhet i NAV,1,7
+Arbeidsgiver 2,Delvis løst/videreformidlet til Arbeid og ytelser,1,9
+Arbeidsgiver 2,Delvis løst/videreformidlet til NAV Fylkesledd,1,3
+Arbeidsgiver 2,Delvis løst/videreformidlet til NAV-kontor,1,254
+Arbeidsgiver 2,"Ferdig besvart, avsluttet og henvist nav.no",1,363
+Arbeidsgiver 2,Innringer ringer selv tilbake senere,1,25
+Arbeidsgiver 2,Ringt feil,1,33
+Arbeidsgiver 3,Brutt samtale / teknisk feil,1,8
+Arbeidsgiver 3,Delvis løst/videreformidlet NAV Familie og pensjon,1,1
+Arbeidsgiver 3,Delvis løst/videreformidlet NKS/NSS,1,35
+Arbeidsgiver 3,Delvis løst/videreformidlet til annen enhet i NAV,1,2
+Arbeidsgiver 3,Delvis løst/videreformidlet til Arbeid og ytelser,1,7
+Arbeidsgiver 3,Delvis løst/videreformidlet til NAV Fylkesledd,1,1
+Arbeidsgiver 3,Delvis løst/videreformidlet til NAV-kontor,1,380
+Arbeidsgiver 3,"Ferdig besvart, avsluttet og henvist nav.no",1,404
+Arbeidsgiver 3,Innringer ringer selv tilbake senere,1,67
+Arbeidsgiver 3,Ringt feil,1,42
+Beskjed til NAV - Arbeid,Delvis løst/videreformidlet NAV Familie og pensjon,1,3
+Beskjed til NAV - Arbeid,Delvis løst/videreformidlet NKS/NSS,1,28
+Beskjed til NAV - Arbeid,Delvis løst/videreformidlet NØP/NØS,1,8
+Beskjed til NAV - Arbeid,Delvis løst/videreformidlet til annen enhet i NAV,1,15
+Beskjed til NAV - Arbeid,Delvis løst/videreformidlet til Arbeid og ytelser,1,111
+Beskjed til NAV - Arbeid,Delvis løst/videreformidlet til NAV-kontor,1,1055
+Beskjed til NAV - Arbeid,"Ferdig besvart, avsluttet og henvist nav.no",1,1461
+Beskjed til NAV - Arbeid,Skrevet feil,1,40
+Beskjed til NAV - Familie,Delvis løst/videreformidlet NAV Familie og pensjon,1,153
+Beskjed til NAV - Familie,Delvis løst/videreformidlet NKS/NSS,1,29
+Beskjed til NAV - Familie,Delvis løst/videreformidlet NØP/NØS,1,2
+Beskjed til NAV - Familie,Delvis løst/videreformidlet til annen enhet i NAV,1,6
+Beskjed til NAV - Familie,Delvis løst/videreformidlet til Arbeid og ytelser,1,13
+Beskjed til NAV - Familie,Delvis løst/videreformidlet til NAV-kontor,1,9
+Beskjed til NAV - Familie,"Ferdig besvart, avsluttet og henvist nav.no",1,594
+Beskjed til NAV - Familie,Ringt feil,1,2
+Beskjed til NAV - Familie,Skrevet feil,1,10
+Beskjed til NAV - Internasjonalt,Delvis løst/videreformidlet NAV Familie og pensjon,1,3
+Beskjed til NAV - Internasjonalt,Delvis løst/videreformidlet NKS/NSS,1,1
+Beskjed til NAV - Internasjonalt,Delvis løst/videreformidlet til annen enhet i NAV,1,3
+Beskjed til NAV - Internasjonalt,Delvis løst/videreformidlet til Arbeid og ytelser,1,8
+Beskjed til NAV - Internasjonalt,"Ferdig besvart, avsluttet og henvist nav.no",1,44
+Beskjed til NAV - Ort. hjelpemidler,Delvis løst/videreformidlet til Arbeid og ytelser,1,1
+Beskjed til NAV - Ort. hjelpemidler,Delvis løst/videreformidlet til NAV-kontor,1,2
+Beskjed til NAV - Ort. hjelpemidler,"Ferdig besvart, avsluttet og henvist nav.no",1,6
+Beskjed til NAV - Pensjon,Brutt samtale / teknisk feil,1,1
+Beskjed til NAV - Pensjon,Delvis løst/videreformidlet NAV Familie og pensjon,1,104
+Beskjed til NAV - Pensjon,Delvis løst/videreformidlet NKS/NSS,1,16
+Beskjed til NAV - Pensjon,Delvis løst/videreformidlet NØP/NØS,1,8
+Beskjed til NAV - Pensjon,Delvis løst/videreformidlet til annen enhet i NAV,1,3
+Beskjed til NAV - Pensjon,Delvis løst/videreformidlet til Arbeid og ytelser,1,10
+Beskjed til NAV - Pensjon,Delvis løst/videreformidlet til NAV-kontor,1,2
+Beskjed til NAV - Pensjon,"Ferdig besvart, avsluttet og henvist nav.no",1,345
+Beskjed til NAV - Pensjon,Innringer ringer selv tilbake senere,1,2
+Beskjed til NAV - Pensjon,Ringt feil,1,2
+Beskjed til NAV - Pensjon,Skrevet feil,1,23
+Beskjed til NAV - Uføretrygd,Delvis løst/videreformidlet NAV Familie og pensjon,1,3
+Beskjed til NAV - Uføretrygd,Delvis løst/videreformidlet NKS/NSS,1,11
+Beskjed til NAV - Uføretrygd,Delvis løst/videreformidlet NØP/NØS,1,3
+Beskjed til NAV - Uføretrygd,Delvis løst/videreformidlet til annen enhet i NAV,1,2
+Beskjed til NAV - Uføretrygd,Delvis løst/videreformidlet til Arbeid og ytelser,1,20
+Beskjed til NAV - Uføretrygd,Delvis løst/videreformidlet til NAV-kontor,1,17
+Beskjed til NAV - Uføretrygd,"Ferdig besvart, avsluttet og henvist nav.no",1,397
+Beskjed til NAV - Uføretrygd,Skrevet feil,1,5
+Familie,Brutt samtale / teknisk feil,1,36
+Familie,Delvis løst/videreformidlet NAV Familie og pensjon,1,695
+Familie,Delvis løst/videreformidlet NKS/NSS,1,248
+Familie,Delvis løst/videreformidlet NØP/NØS,1,7
+Familie,Delvis løst/videreformidlet til annen enhet i NAV,1,40
+Familie,Delvis løst/videreformidlet til Arbeid og ytelser,1,125
+Familie,Delvis løst/videreformidlet til NAV Fylkesledd,1,2
+Familie,Delvis løst/videreformidlet til NAV-kontor,1,108
+Familie,"Ferdig besvart, avsluttet og henvist nav.no",1,5702
+Familie,Innringer ringer selv tilbake senere,1,26
+Familie,Ringt feil,1,146
+Internasjonalt,Brutt samtale / teknisk feil,1,5
+Internasjonalt,Delvis løst/videreformidlet NAV Familie og pensjon,1,23
+Internasjonalt,Delvis løst/videreformidlet NKS/NSS,1,36
+Internasjonalt,Delvis løst/videreformidlet NØP/NØS,1,1
+Internasjonalt,Delvis løst/videreformidlet til annen enhet i NAV,1,46
+Internasjonalt,Delvis løst/videreformidlet til Arbeid og ytelser,1,55
+Internasjonalt,Delvis løst/videreformidlet til NAV-kontor,1,22
+Internasjonalt,"Ferdig besvart, avsluttet og henvist nav.no",1,746
+Internasjonalt,Innringer ringer selv tilbake senere,1,6
+Internasjonalt,Ringt feil,1,28
+Klageinstans,Brutt samtale / teknisk feil,1,2
+Klageinstans,Delvis løst/videreformidlet NAV Familie og pensjon,1,1
+Klageinstans,Delvis løst/videreformidlet NKS/NSS,1,6
+Klageinstans,Delvis løst/videreformidlet til annen enhet i NAV,1,53
+Klageinstans,Delvis løst/videreformidlet til Arbeid og ytelser,1,4
+Klageinstans,Delvis løst/videreformidlet til NAV-kontor,1,2
+Klageinstans,"Ferdig besvart, avsluttet og henvist nav.no",1,170
+Klageinstans,Innringer ringer selv tilbake senere,1,8
+Klageinstans,Ringt feil,1,4
+Lege og behandler,Brutt samtale / teknisk feil,1,8
+Lege og behandler,Delvis løst/videreformidlet NAV Familie og pensjon,1,3
+Lege og behandler,Delvis løst/videreformidlet NKS/NSS,1,138
+Lege og behandler,Delvis løst/videreformidlet til annen enhet i NAV,1,5
+Lege og behandler,Delvis løst/videreformidlet til Arbeid og ytelser,1,58
+Lege og behandler,Delvis løst/videreformidlet til NAV Fylkesledd,1,3
+Lege og behandler,Delvis løst/videreformidlet til NAV-kontor,1,463
+Lege og behandler,"Ferdig besvart, avsluttet og henvist nav.no",1,474
+Lege og behandler,Innringer ringer selv tilbake senere,1,77
+Lege og behandler,Ringt feil,1,140
+Pensjon,Brutt samtale / teknisk feil,1,37
+Pensjon,Delvis løst/videreformidlet NAV Familie og pensjon,1,109
+Pensjon,Delvis løst/videreformidlet NKS/NSS,1,131
+Pensjon,Delvis løst/videreformidlet NØP/NØS,1,77
+Pensjon,Delvis løst/videreformidlet til annen enhet i NAV,1,16
+Pensjon,Delvis løst/videreformidlet til Arbeid og ytelser,1,14
+Pensjon,Delvis løst/videreformidlet til NAV-kontor,1,21
+Pensjon,"Ferdig besvart, avsluttet og henvist nav.no",1,2956
+Pensjon,Innringer ringer selv tilbake senere,1,7
+Pensjon,Ringt feil,1,160
+Pensjon,Skrevet feil,1,2
+Pleiepenger,Delvis løst/videreformidlet NAV Familie og pensjon,1,9
+Pleiepenger,Delvis løst/videreformidlet NKS/NSS,1,8
+Pleiepenger,Delvis løst/videreformidlet til Arbeid og ytelser,1,18
+Pleiepenger,Delvis løst/videreformidlet til NAV-kontor,1,1
+Pleiepenger,"Ferdig besvart, avsluttet og henvist nav.no",1,105
+Pleiepenger,Innringer ringer selv tilbake senere,1,3
+Pleiepenger,Ringt feil,1,4
+Pleiepenger,Skrevet feil,1,1
+Sosiale tjenester,Brutt samtale / teknisk feil,1,66
+Sosiale tjenester,Delvis løst/videreformidlet NAV Familie og pensjon,1,8
+Sosiale tjenester,Delvis løst/videreformidlet NKS/NSS,1,233
+Sosiale tjenester,Delvis løst/videreformidlet til annen enhet i NAV,1,25
+Sosiale tjenester,Delvis løst/videreformidlet til Arbeid og ytelser,1,20
+Sosiale tjenester,Delvis løst/videreformidlet til NAV-kontor,1,2459
+Sosiale tjenester,"Ferdig besvart, avsluttet og henvist nav.no",1,2589
+Sosiale tjenester,Innringer ringer selv tilbake senere,1,300
+Sosiale tjenester,Ringt feil,1,209
+Sosiale tjenester,Skrevet feil,1,2
+Teknisk brukerstøtte,Brutt samtale / teknisk feil,1,4
+Teknisk brukerstøtte,Delvis løst/videreformidlet NAV Familie og pensjon,1,1
+Teknisk brukerstøtte,Delvis løst/videreformidlet NKS/NSS,1,21
+Teknisk brukerstøtte,Delvis løst/videreformidlet til annen enhet i NAV,1,7
+Teknisk brukerstøtte,Delvis løst/videreformidlet til NAV Fylkesledd,1,1
+Teknisk brukerstøtte,Delvis løst/videreformidlet til NAV-kontor,1,8
+Teknisk brukerstøtte,"Ferdig besvart, avsluttet og henvist nav.no",1,197
+Teknisk brukerstøtte,Innringer ringer selv tilbake senere,1,1
+Teknisk brukerstøtte,Ringt feil,1,43
+Uføretrygd,Brutt samtale / teknisk feil,1,24
+Uføretrygd,Delvis løst/videreformidlet NAV Familie og pensjon,1,8
+Uføretrygd,Delvis løst/videreformidlet NKS/NSS,1,104
+Uføretrygd,Delvis løst/videreformidlet NØP/NØS,1,27
+Uføretrygd,Delvis løst/videreformidlet til annen enhet i NAV,1,28
+Uføretrygd,Delvis løst/videreformidlet til Arbeid og ytelser,1,47
+Uføretrygd,Delvis løst/videreformidlet til NAV-kontor,1,62
+Uføretrygd,"Ferdig besvart, avsluttet og henvist nav.no",1,1859
+Uføretrygd,Innringer ringer selv tilbake senere,1,7
+Uføretrygd,Ringt feil,1,86
+Uføretrygd,Skrevet feil,1,1
+Delvis løst/videreformidlet NAV Familie og pensjon,Ringt opp 2. linje og videreformidlet svar,NA,6
+Delvis løst/videreformidlet NAV Familie og pensjon,Sendt oppgave,NA,807
+Delvis løst/videreformidlet NAV Familie og pensjon,Telefon satt over til saksbehandler/person,NA,10
+Delvis løst/videreformidlet NAV Familie og pensjon,Telefon satt til kompetansekø,NA,403
+Delvis løst/videreformidlet NØP/NØS,Ringt opp 2. linje og videreformidlet svar,NA,10
+Delvis løst/videreformidlet NØP/NØS,Sendt oppgave,NA,94
+Delvis løst/videreformidlet NØP/NØS,Telefon satt over til saksbehandler/person,NA,5
+Delvis løst/videreformidlet NØP/NØS,Telefon satt til kompetansekø,NA,73
+Delvis løst/videreformidlet til annen enhet i NAV,Ringt opp 2. linje og videreformidlet svar,NA,9
+Delvis løst/videreformidlet til annen enhet i NAV,Sendt oppgave,NA,126
+Delvis løst/videreformidlet til annen enhet i NAV,Telefon satt over til saksbehandler/person,NA,42
+Delvis løst/videreformidlet til annen enhet i NAV,Telefon satt til kompetansekø,NA,274
+Delvis løst/videreformidlet til Arbeid og ytelser,Ringt opp 2. linje og videreformidlet svar,NA,59
+Delvis løst/videreformidlet til Arbeid og ytelser,Sendt oppgave,NA,716
+Delvis løst/videreformidlet til Arbeid og ytelser,Telefon satt over til saksbehandler/person,NA,31
+Delvis løst/videreformidlet til Arbeid og ytelser,Telefon satt til kompetansekø,NA,1424
+Delvis løst/videreformidlet til NAV Fylkesledd,Sendt oppgave,NA,16
+Delvis løst/videreformidlet til NAV Fylkesledd,Telefon satt over til saksbehandler/person,NA,5
+Delvis løst/videreformidlet til NAV Fylkesledd,Telefon satt til kompetansekø,NA,9
+Delvis løst/videreformidlet til NAV-kontor,Personlig oppmøte på NAV-kontoret,NA,60
+Delvis løst/videreformidlet til NAV-kontor,Ringt opp 2. linje og videreformidlet svar,NA,103
+Delvis løst/videreformidlet til NAV-kontor,Sendt oppgave,NA,8015
+Delvis løst/videreformidlet til NAV-kontor,Telefon satt over til saksbehandler/person,NA,1430
+Delvis løst/videreformidlet til NAV-kontor,Telefon satt til kompetansekø,NA,101
