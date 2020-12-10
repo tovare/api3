@@ -181,9 +181,9 @@ func GetApplicationSecrets(ctx context.Context) (secrets []byte, err error) {
 	}
 
 	secretResponse, err := client.AccessSecretVersion(ctx, req)
-	secrets = secretResponse.Payload.Data
 	if err != nil {
 		return
 	}
+	secrets = secretResponse.Payload.Data
 	return
 }

@@ -12,6 +12,6 @@ be deployed using.
 
 To see the command later use:
 
-    gcloud app browse
+    cloud app browse -s dashboard
 
 A prerequisite for this application is a cloud scheduler.
