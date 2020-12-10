@@ -2,6 +2,12 @@
 
 Rewritten in Go as part of a consolidation effort to scale back infrastructure.
 
+Retries realtime statistics from Google Analytics and visualize it on a map.
+
+![](screenshot.png)
+
+
+
 
 # Deploying the application
 
