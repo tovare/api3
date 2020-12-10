@@ -34,13 +34,16 @@ body {
   min-height: 100%;
 }
 
+
 svg {
     background-color: #3e3832;
     position: fixed;
-  top: 50%;
-  left: 50%;
-  /* bring your own prefixes */
-  transform: translate(-50%, -50%);
+    position:fixed; top:0; left:0; height:100%; width:100%
+ /*
+    top: 50%;
+    left: 50%;
+   bring your own prefixes 
+    transform: translate(-50%, -50%); */
 }
 
 path {
@@ -59,8 +62,8 @@ var width = 1800,
 
 var svg = d3.select("body").append("svg")
     .attr("width", "100%")
-    .attr("height", height);
-
+    .attr("height", height)
+    .attr("viewBox","0 0 1800 900") 
 
 
 //Container for the gradients
