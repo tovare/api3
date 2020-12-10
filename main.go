@@ -17,8 +17,7 @@ func main() {
 	http.HandleFunc(AppPrefix+"rtgeo", RtGeoHandler)
 	http.HandleFunc(AppPrefix+"rtdevices", RtDeviceHandler)
 	http.HandleFunc(AppPrefix+"refreshdata", RefreshData)
-	http.Handle(AppPrefix, http.StripPrefix(AppPrefix), http.FileServer(http.Dir("public"))))
-
+	http.Handle(AppPrefix, http.StripPrefix(AppPrefix, http.FileServer(http.Dir("public"))))
 
 	port := os.Getenv("PORT")
 	if port == "" {
@@ -48,7 +47,7 @@ func RtDeviceHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 // RefreshData is called every 10 seconds and refreshes
-// the datasource.
+// the datasource. This method is open, but the harm is limited.
 func RefreshData(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
 		fmt.Fprint(w, "OK")
