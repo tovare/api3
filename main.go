@@ -1,6 +1,6 @@
 // package main contains all processes for this application.
 //
-// Why polling not long polling endpoints or alternatives
+// Polling and not long polling or alternatives
 //
 // Using enddpoints with longpolling is be beneficial because the client is
 // likely to request data more frequently. The rrecent http/3 standard
