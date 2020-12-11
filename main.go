@@ -217,8 +217,6 @@ func RefreshDataHandler(w http.ResponseWriter, r *http.Request) {
 // TODO: Update 2 times for every call with a time delay between each, making
 // the update frequency 30 seconds. 24*60*2*3=86400 requests/day
 //
-// TODO: Improve cache headers to improve scalability.
-//
 //
 func RefreshData() (err error) {
 
