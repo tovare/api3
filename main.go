@@ -58,12 +58,9 @@ var db sync.Map
 var ga *analytics.Service
 
 const (
-	RTUsers       string = "rtusers"
-	RTGeo         string = "rtgeo"
-	RTDevices     string = "rtdevices"
-	RTUsersLong   string = "lrtusers"
-	RTGeoLong     string = "lrtgeo"
-	RTDevicesLong string = "lrtdevices"
+	RTUsers   string = "rtusers"
+	RTGeo     string = "rtgeo"
+	RTDevices string = "rtdevices"
 )
 
 func main() {
@@ -103,6 +100,7 @@ func main() {
 	}
 }
 
+// RtUsersHandler serves the number of sessions online now.
 func RtUsersHandler(w http.ResponseWriter, r *http.Request) {
 
 	var jsonResponse string
@@ -116,6 +114,8 @@ func RtUsersHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprint(w, jsonResponse)
 }
 
+// RtGeoHandler serves a array with geo-coordinates and the number of active
+// sessions.
 func RtGeoHandler(w http.ResponseWriter, r *http.Request) {
 	var jsonResponse string
 	value, ok := db.Load(RTGeo)
@@ -159,9 +159,40 @@ func RefreshDataHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-// Called every 1 minute from cloud scheduler.
+// RefreshData iss called every 1 minute from cloud scheduler.
 //
-// TODO: Update 6 times for every call with a time delay between each.
+// Current API protection
+//
+// The API is currently only protected by its surrounding infrastructure and it
+// doesn´t check that its only called by the Google Cloud Scheduler function.
+// The concequences of too many calls will a temporary downtime due to too many
+// calls to the GA API which is limited to 150 000 calls in a 24 hour period
+// (Since we rouond robin 3 views).
+//
+// We do have some infrastructure protection from cloudflare if we are hit by an
+// extreme amount of traffic from a single source, but still there is a real
+// risk that resources might be exchausted so that it stops working until the
+// next day.
+//
+// Higher frequency
+//
+// The maximum resolution of the cloud scheduler is 1 minute and also incurres
+// http overhead when used. For higher frequencies doing several calls by using
+// a rate limiter is a viable option. It will increase the latency statistics a
+// bit. Historicly I have used refresh-rates of 5 seconds, however it sometimes
+// gave a busy view and a slower refresh rate is probably better. An illusion of
+// change is done by tweening in the D3 library over a few seconds.
+//
+//    0   5                      30
+//    |---|-----------------------|
+//       Tween
+//
+//
+// TODO: Update 2 times for every call with a time delay between each, making
+// the update frequency 30 seconds. 24*60*2*3=86400 requests/day
+//
+// TODO: Increase tweening in D3 viz from 2 to 5 seconds.
+//
 func RefreshData() (err error) {
 
 	var profiles = [...]string{"ga:78449289", "ga:95719958"}
