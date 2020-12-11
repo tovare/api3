@@ -159,7 +159,7 @@ func RefreshDataHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-// RefreshData iss called every 1 minute from cloud scheduler.
+// RefreshData is called every 1 minute from cloud scheduler.
 //
 // Current API protection
 //
@@ -191,7 +191,8 @@ func RefreshDataHandler(w http.ResponseWriter, r *http.Request) {
 // TODO: Update 2 times for every call with a time delay between each, making
 // the update frequency 30 seconds. 24*60*2*3=86400 requests/day
 //
-// TODO: Increase tweening in D3 viz from 2 to 5 seconds.
+// TODO: Improve cache headers to improve scalability.
+//
 //
 func RefreshData() (err error) {
 
