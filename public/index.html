@@ -143,7 +143,7 @@ d3.json("data/europe50geojson.topojson", function(error, europe) {
 
         d3.interval(function(){
             updateData();
-        },5000);
+        },15000);
 
   });
     
@@ -308,7 +308,7 @@ function deviceandel(selection,x,y) {
     
     d3.interval(function() {
         updateDevices();
-    },5000);
+    },15000);
 
     function updateDevices() {
         d3.json("rtdevices", function(error, data) {
