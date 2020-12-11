@@ -3,19 +3,19 @@
 // Polling and not long polling or alternatives
 //
 // Using enddpoints with longpolling is be beneficial because the client is
-// likely to request data more frequently. The rrecent http/3 standard
-// uses UDP and with a smaller overhead for each connection. The compatability
-// of regular http requests are unparallelled.
+// likely to request data more frequently. The rrecent http/3 standard uses UDP
+// and with a smaller overhead for each connection. The compatability of regular
+// http requests are unparallelled.
 //
-// For longpolling to work, the client needs to call the API asyncronously
-// and noot tie up the main thread, and also needs to return the timestamp
-// of the last request they recieved to properly assess when they shuld
-// get the next one.
+// For longpolling to work, the client needs to call the API asyncronously and
+// noot tie up the main thread, and also needs to return the timestamp of the
+// last request they recieved to properly assess when they shuld get the next
+// one.
 //
 // App Engine application can have a maximum of 100 paralell connections to each
 // instance of the application. When using autoscaling the maximum lifespan of a
-// connection is 10 minutes. Using basic scaling allows for a connection lifespan
-// of 24 hours.
+// connection is 10 minutes. Using basic scaling allows for a connection
+// lifespan of 24 hours.
 //
 // However, since the requests are so small and light on resources combined with
 // regular updates there are no real beneffits to long polling. The overhead for
@@ -26,8 +26,8 @@
 //    rtuserss  h3-29  25 bytes
 //    rtdevices h3-29  52 bytes
 //
-// Each request is somewhat slow on the app engine with a 100ms roundtrip from Oslo
-// via cloudflare to google cloud. The speed is good enough.
+// Each request is somewhat slow on the app engine with a 100ms roundtrip from
+// Oslo via cloudflare to google cloud.
 //
 //
 package main
@@ -143,7 +143,7 @@ func RtDeviceHandler(w http.ResponseWriter, r *http.Request) {
 
 }
 
-// RefreshData is called every minute and refreshes
+// RefreshDataHandler is called every minute and refreshes
 // the datasource. This method is open, but the harm is limited.
 func RefreshDataHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
@@ -187,7 +187,8 @@ func RefreshData() (err error) {
 	return
 }
 
-// SetupGoogleAnalyticsService authenticates with GA and retrieve a reporting object.
+// SetupGoogleAnalyticsService authenticates with GA and retrieve a reporting
+// object.
 func SetupGoogleAnalyticsService(ctx context.Context) (gaClient *analytics.Service, err error) {
 	secret, err := GetApplicationSecrets(ctx)
 	if err != nil {
@@ -202,8 +203,8 @@ func SetupGoogleAnalyticsService(ctx context.Context) (gaClient *analytics.Servi
 	return
 }
 
-// GetApplicationSecrets retrieves secrets because we don´t want to use the default
-// serviceaccount. The secret contains oath json credentials.
+// GetApplicationSecrets retrieves secrets because we don´t want to use the
+// default serviceaccount. The secret contains oath json credentials.
 func GetApplicationSecrets(ctx context.Context) (secrets []byte, err error) {
 	client, err := secretmanager.NewClient(ctx)
 	if err != nil {
