@@ -156,7 +156,8 @@ func RtDeviceHandler(w http.ResponseWriter, r *http.Request) {
 // Use of max-age
 //
 // The use of max-age on mutable data is unfortunate in instances where data
-// should be in sync, in this case we don´t care.
+// should be in sync, in this case we don´t care. In practice a request
+// will most often be sendt without caching from most clients.
 //
 func setCacheHeadersForHTTPHandlers(w http.ResponseWriter) {
 	value, ok := db.Load(LastModified)
