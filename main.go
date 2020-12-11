@@ -45,6 +45,7 @@ import (
 
 	secretmanager "cloud.google.com/go/secretmanager/apiv1"
 	"golang.org/x/oauth2/google"
+	"golang.org/x/time/rate"
 	"google.golang.org/api/analytics/v3"
 	secretmanagerpb "google.golang.org/genproto/googleapis/cloud/secretmanager/v1"
 )
@@ -54,8 +55,8 @@ const (
 )
 
 var db sync.Map
-
 var ga *analytics.Service
+var limiter *rate.Limiter
 
 const (
 	RTUsers         string        = "rtusers"
@@ -69,6 +70,8 @@ func main() {
 
 	// Initialize random
 	rand.Seed(time.Now().UnixNano())
+	// Limit 20 needs because we need to complete two calls before cloud scheduler sends requests.
+	limiter = rate.NewLimiter(rate.Every(20*time.Second), 1)
 
 	// Initialize the database.
 	var err error
@@ -171,14 +174,17 @@ func setCacheHeadersForHTTPHandlers(w http.ResponseWriter) {
 }
 
 // RefreshDataHandler is called every minute and refreshes
-// the datasource. This method is open, but the harm is limited.
+// the datasource.
 func RefreshDataHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
-		err := RefreshData()
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			fmt.Fprint(w, "Update failed")
+		for i := 0; i < 2; i++ {
+			limiter.Wait(context.Background())
+			err := RefreshData()
+			if err != nil {
+				w.WriteHeader(http.StatusInternalServerError)
+				fmt.Fprint(w, "Update failed")
 
+			}
 		}
 	} else {
 		w.WriteHeader(http.StatusMethodNotAllowed)
@@ -215,33 +221,38 @@ func RefreshDataHandler(w http.ResponseWriter, r *http.Request) {
 //       Tween
 //
 //
-// TODO: Update 2 times for every call with a time delay between each, making
-// the update frequency 30 seconds. 24*60*2*3=86400 requests/day
+// This method is called twice for every call with a time delay between each,
+// making the update frequency 30 seconds. 24*60*2*3=86400 requests/day see
+// RefreshDataHandler.
 //
 //
 func RefreshData() (err error) {
 
+	var (
+		rtCall, geo, devices *analytics.RealtimeData
+	)
 	var profiles = [...]string{"ga:78449289", "ga:95719958"}
 	view := profiles[rand.Intn(len(profiles))]
-	rtCall, err := ga.Data.Realtime.Get(view, "rt:activeUsers").Do()
+	rtCall, err = ga.Data.Realtime.Get(view, "rt:activeUsers").Do()
 	if err != nil {
 		return
 	}
 	db.Store(RTUsers, rtCall.Rows)
 
-	geo, err := ga.Data.Realtime.Get(view, "rt:activeUsers").Dimensions("rt:longitude,rt:latitude").Do()
+	geo, err = ga.Data.Realtime.Get(view, "rt:activeUsers").Dimensions("rt:longitude,rt:latitude").Do()
 	if err != nil {
 		return
 	}
 	db.Store(RTGeo, geo.Rows)
 
-	devices, err := ga.Data.Realtime.Get(view, "rt:activeUsers").Dimensions("rt:deviceCategory").Do()
+	devices, err = ga.Data.Realtime.Get(view, "rt:activeUsers").Dimensions("rt:deviceCategory").Do()
 	if err != nil {
 		return
 	}
 	db.Store(RTDevices, devices.Rows)
 
 	db.Store(LastModified, time.Now().UTC())
+
 	return
 }
 
