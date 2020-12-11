@@ -209,7 +209,7 @@ d3.json("rtusers", function(error, data) {
                 console.log("Updated brukere-realtime: "+ activeUsers);
                 rtusers.select("text")
                     .transition()
-                    .duration(2000)
+                    .duration(4000)
                     .tween("text", function () {
                         var node = d3.select(this);
                         // Create a function for tween wich is called 
