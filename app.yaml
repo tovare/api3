@@ -1,3 +1,7 @@
 runtime: go114
 instance_class: F1
 
+automatic_scaling:
+  min_idle_instances: automatic
+  max_idle_instances: 1
+  max_instances: 1

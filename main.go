@@ -224,6 +224,8 @@ func RefreshData() (err error) {
 	)
 	var profiles = [...]string{"ga:78449289", "ga:95719958"}
 	view := profiles[rand.Intn(len(profiles))]
+	defer timeTrack(time.Now(), "Update timing:")
+
 	rtCall, err = ga.Data.Realtime.Get(view, "rt:activeUsers").Do()
 	if err != nil {
 		return
@@ -280,4 +282,9 @@ func GetApplicationSecrets(ctx context.Context) (secrets []byte, err error) {
 	}
 	secrets = secretResponse.Payload.Data
 	return
+}
+
+func timeTrack(start time.Time, name string) {
+	elapsed := time.Since(start)
+	log.Printf("%s took %s", name, elapsed)
 }
