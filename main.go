@@ -45,8 +45,8 @@ import (
 	"time"
 
 	secretmanager "cloud.google.com/go/secretmanager/apiv1"
-	"golang.org/x/oauth2/google"
 	"google.golang.org/api/analytics/v3"
+	"google.golang.org/api/option"
 	secretmanagerpb "google.golang.org/genproto/googleapis/cloud/secretmanager/v1"
 )
 
@@ -55,7 +55,6 @@ const (
 )
 
 var db sync.Map
-var ga *analytics.Service
 
 const (
 	RTUsers         string        = "rtusers"
@@ -70,15 +69,8 @@ func main() {
 	// Initialize random
 	rand.Seed(time.Now().UnixNano())
 
-	// Initialize the database.
 	var err error
-	ga, err = SetupGoogleAnalyticsService(context.Background())
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-
-	err = RefreshData()
+	err = RefreshData(context.Background())
 	if err != nil {
 		log.Println(err)
 	}
@@ -101,8 +93,6 @@ func main() {
 		log.Fatal(err)
 	}
 }
-
-// RtUsersHandler serves the number of sessions online now.
 func RtUsersHandler(w http.ResponseWriter, r *http.Request) {
 	setCacheHeadersForHTTPHandlers(w)
 
@@ -174,11 +164,20 @@ func setCacheHeadersForHTTPHandlers(w http.ResponseWriter) {
 // the datasource.
 func RefreshDataHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
-		err := RefreshData()
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			fmt.Fprint(w, "Update failed")
+		done := make(chan bool, 1)
 
+		go func() {
+			err := RefreshData(r.Context())
+			if err != nil {
+				w.WriteHeader(http.StatusInternalServerError)
+				fmt.Fprint(w, "Update failed")
+			}
+			done <- true
+		}()
+		select {
+		case <-done:
+		case <-time.After(5 * time.Second):
+			fmt.Println("Early exit, timeout 5 seconds")
 		}
 	} else {
 		w.WriteHeader(http.StatusMethodNotAllowed)
@@ -217,32 +216,45 @@ func RefreshDataHandler(w http.ResponseWriter, r *http.Request) {
 //
 //
 //
-func RefreshData() (err error) {
+func RefreshData(ctx context.Context) (err error) {
 
 	var (
 		rtCall, geo, devices *analytics.RealtimeData
 	)
 	var profiles = [...]string{"ga:78449289", "ga:95719958"}
 	view := profiles[rand.Intn(len(profiles))]
+	log.Println("View ", view)
 	defer timeTrack(time.Now(), "Update timing:")
+
+	var ga *analytics.Service
+	ga, err = SetupGoogleAnalyticsService(ctx)
+
+	if err != nil {
+		db.Store(RTUsers, rtCall.Rows)
+		return
+	}
 
 	rtCall, err = ga.Data.Realtime.Get(view, "rt:activeUsers").Do()
 	if err != nil {
 		return
+	} else {
+		db.Store(RTUsers, rtCall.Rows)
 	}
-	db.Store(RTUsers, rtCall.Rows)
 
 	geo, err = ga.Data.Realtime.Get(view, "rt:activeUsers").Dimensions("rt:longitude,rt:latitude").Do()
 	if err != nil {
 		return
+	} else {
+		db.Store(RTGeo, geo.Rows)
 	}
-	db.Store(RTGeo, geo.Rows)
 
 	devices, err = ga.Data.Realtime.Get(view, "rt:activeUsers").Dimensions("rt:deviceCategory").Do()
 	if err != nil {
 		return
+	} else {
+		db.Store(RTDevices, devices.Rows)
+
 	}
-	db.Store(RTDevices, devices.Rows)
 
 	db.Store(LastModified, time.Now().UTC())
 
@@ -256,12 +268,13 @@ func SetupGoogleAnalyticsService(ctx context.Context) (gaClient *analytics.Servi
 	if err != nil {
 		return
 	}
-	jwtConf, err := google.JWTConfigFromJSON(
-		secret,
-		analytics.AnalyticsReadonlyScope,
-	)
-	httpClient := jwtConf.Client(ctx)
-	gaClient, err = analytics.New(httpClient)
+	//	jwtConf, err := google.JWTConfigFromJSON(
+	//		secret,
+	//		analytics.AnalyticsReadonlyScope,
+	//)
+	//httpClient := jwtConf.Client(ctx)
+	//gaClient, err = analytics.New(httpClient)
+	gaClient, err = analytics.NewService(ctx, option.WithCredentialsJSON(secret))
 	return
 }
 
