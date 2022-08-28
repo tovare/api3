@@ -3,16 +3,17 @@ module github.com/tovare/api3
 go 1.16
 
 require (
-	google.golang.org/api v0.70.0
-	google.golang.org/genproto v0.0.0-20220301145929-1ac2ace0dbf7
+	google.golang.org/api v0.94.0
+	google.golang.org/genproto v0.0.0-20220822174746-9e6da59bd2fc
 )
 
 require (
-	cloud.google.com/go/compute v1.5.0 // indirect
-	cloud.google.com/go/iam v0.2.0 // indirect
-	cloud.google.com/go/secretmanager v1.2.0
+	cloud.google.com/go v0.104.0 // indirect
+	cloud.google.com/go/compute v1.9.0 // indirect
+	cloud.google.com/go/secretmanager v1.5.0
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
-	golang.org/x/net v0.0.0-20220225172249-27dd8689420f // indirect
-	golang.org/x/oauth2 v0.0.0-20220223155221-ee480838109b // indirect
-	golang.org/x/sys v0.0.0-20220227234510-4e6760a101f9 // indirect
+	github.com/googleapis/gax-go/v2 v2.5.1 // indirect
+	golang.org/x/net v0.0.0-20220826154423-83b083e8dc8b // indirect
+	golang.org/x/sys v0.0.0-20220825204002-c680a09ffe64 // indirect
+	google.golang.org/grpc v1.49.0 // indirect
 )
