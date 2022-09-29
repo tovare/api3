@@ -1,6 +1,6 @@
 // package main contains all processes for this application.
 //
-// Polling and not long polling or alternatives
+// # Polling and not long polling or alternatives
 //
 // Using enddpoints with longpolling is be beneficial because the client is
 // likely to request data more frequently. The rrecent http/3 standard uses UDP
@@ -23,14 +23,12 @@
 // each send/recieve transaction is about 900 bytes with 6 cookies for Google
 // Analytics, GA4 and Cloudflares "allways online" cookie included.
 //
-//    rtgeo     h3-29  6 kb
-//    rtuserss  h3-29  25 bytes
-//    rtdevices h3-29  52 bytes
+//	rtgeo     h3-29  6 kb
+//	rtuserss  h3-29  25 bytes
+//	rtdevices h3-29  52 bytes
 //
 // Each request is somewhat slow on the app engine with a 100ms roundtrip from
 // Oslo via cloudflare to google cloud.
-//
-//
 package main
 
 import (
@@ -143,12 +141,11 @@ func RtDeviceHandler(w http.ResponseWriter, r *http.Request) {
 // setCacheHeadersForHTTPHandlers sents a set of cache-headers for the handlers
 // delivering data.
 //
-// Use of max-age
+// # Use of max-age
 //
 // The use of max-age on mutable data is unfortunate in instances where data
 // should be in sync, in this case we don´t care. In practice a request
 // will most often be sendt without caching from most clients.
-//
 func setCacheHeadersForHTTPHandlers(w http.ResponseWriter) {
 	value, ok := db.Load(LastModified)
 	if !ok {
@@ -187,7 +184,7 @@ func RefreshDataHandler(w http.ResponseWriter, r *http.Request) {
 
 // RefreshData is called every 1 minute from cloud scheduler.
 //
-// Current API protection
+// # Current API protection
 //
 // The API is currently only protected by its surrounding infrastructure and it
 // doesn´t check that its only called by the Google Cloud Scheduler function.
@@ -200,7 +197,7 @@ func RefreshDataHandler(w http.ResponseWriter, r *http.Request) {
 // risk that resources might be exchausted so that it stops working until the
 // next day.
 //
-// Higher frequency
+// # Higher frequency
 //
 // The maximum resolution of the cloud scheduler is 1 minute and also incurres
 // http overhead when used.  Historicly I have used refresh-rates of 5 seconds,
@@ -208,14 +205,9 @@ func RefreshDataHandler(w http.ResponseWriter, r *http.Request) {
 // better. An illusion of change is done by tweening in the D3 library over a
 // few seconds.
 //
-//    0   5                      30
-//    |---|-----------------------|
-//       Tween
-//
-//
-//
-//
-//
+//	0   5                      30
+//	|---|-----------------------|
+//	   Tween
 func RefreshData(ctx context.Context) (err error) {
 
 	var (
